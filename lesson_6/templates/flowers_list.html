@@ -1,0 +1,50 @@
+<table style="width:100%">
+    <tr>
+        <th scope="col">name</th>
+        <th scope="col">description</th>
+        <th scope="col">delivered_at</th>
+        <th scope="col">could_use_in_bouquet</th>
+        <th scope="col">wiki_page</th>
+        <th scope="col">count</th>
+    </tr>
+    {% for object in flowers %}
+    <tr>
+        <!-- Display Objects -->
+        <td>{{ object.name }}</td>
+        <td>{{ object.description }}</td>
+        <td>{{ object.delivered_at }}</td>
+        <td>{{ object.could_use_in_bouquet }}</td>
+        <td>
+            <a href="{{ object.wiki_page }}" target="_blank">{{ object.wiki_page }}</a>
+        </td>
+        <td>{{ object.count }}</td>
+        <!-- If objet_tdst is empty  -->
+        {% empty %}
+        <td colspan="6" style="text-align: center;">No objects yet.</td>
+        {% endfor %}
+    </tr>
+</table>
+<a href="{% url 'modelform' %}" class="button">Добавить цветок</a>
+
+<form action="{% url 'search_flower' %}" method="GET">
+    <input type="text" name="q" placeholder="Введите название цветка">
+    <button type="submit">🔍 Искать</button>
+</form>
+
+<style>
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        text-decoration: none;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+</style>

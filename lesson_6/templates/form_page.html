@@ -1,0 +1,29 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit form</button>
+</form>
+<a href="{% url 'all_flowers' %}" class="button">Список цветов</a>
+<form action="{% url 'search_flower' %}" method="GET">
+    <input type="text" name="q" placeholder="Введите название цветка">
+    <button type="submit">🔍 Искать</button>
+</form>
+
+<style>
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        text-decoration: none;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+</style>
+<!-- method="POST" enctype="multipart/form-data" -->

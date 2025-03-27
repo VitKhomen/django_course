@@ -1,0 +1,15 @@
+{% if character %}
+<h1>{{ character.name }}</h1>
+<p>{{ character.description }}</p>
+{% elif name_list %}
+<ul>
+    {% for character in name_list %}
+    <li>
+        <p>{{ character.name }} {{ character.surname }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<h1>Персонаж не найден!</h1>
+{% endif %}
+<a href="{% url 'home' %}">Назад</a>
